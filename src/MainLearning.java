@@ -1,3 +1,10 @@
+
+import java.io.FilePermission;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -8,22 +15,28 @@
  * @author junio
  */
 public class MainLearning {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Vertice[][] ambiente = new Vertice[6][6];
+        Scanner ler = new Scanner(System.in);
+        String caminho = "estado.txt";
+       
         Qlearning aprendizado = new Qlearning();
         //aprendizado.InicializarMatriz(ambiente);
       
         aprendizado.Training(ambiente, 'M');
-        //aprendizado.pecorrerMatriz(ambiente, 'M');
-         for(int i1= 0; i1 <= 5; i1++){
-            for(int j= 0; j<= 5; j++){
-                System.out.println("linha: " + i1 + "coluna: " + j);
-                System.out.println(ambiente[i1][j].getDirbaixo());
-                System.out.println(ambiente[i1][j].getDircima());
-                System.out.println(ambiente[i1][j].getDiresq());
-                System.out.println(ambiente[i1][j].getDirdireita());
-            }
+        aprendizado.CriarArquivo(ambiente, caminho);
+        int controle = 1, origemlinha = 0, origemcoluna = 0;
+        while(controle != 0){
+              System.out.println("Digite uma linha, de 0 a 5:");
+              origemlinha = ler.nextInt();
+              System.out.println("Digite uma coluna, de 0 a 5:");
+              origemcoluna = ler.nextInt();
+              aprendizado.pecorrerMatriz(ambiente, 'M',origemlinha,origemcoluna);
+              System.out.println("Quer tentar um novo caminho, digite 1. Digite 0 para encerrar");
+              controle = ler.nextInt();
         }
+        
+       
     }
     
 }
