@@ -31,6 +31,7 @@ public class MainLearning {
               origemlinha = ler.nextInt();
               System.out.println("Digite uma coluna, de 0 a 5:");
               origemcoluna = ler.nextInt();
+              System.out.println("Caminho pecorrido:");
               aprendizado.pecorrerMatriz(ambiente, 'M',origemlinha,origemcoluna);
               System.out.println("Quer tentar um novo caminho, digite 1. Digite 0 para encerrar");
               controle = ler.nextInt();
