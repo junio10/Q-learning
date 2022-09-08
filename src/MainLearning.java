@@ -17,22 +17,51 @@ import java.util.Scanner;
 public class MainLearning {
     public static void main(String[] args) throws IOException {
         Vertice[][] ambiente = new Vertice[6][6];
+        Vertice[][] ambiente2 = new Vertice[6][6];
         Scanner ler = new Scanner(System.in);
         String caminho = "estado.txt";
        
+        /*  for(int i1= 0; i1 <= 5; i1++){
+            for(int j= 0; j<= 5; j++){
+                ambiente[i1][j] = new Vertice();
+            }
+        }*/
+      
+        
         Qlearning aprendizado = new Qlearning();
-        //aprendizado.InicializarMatriz(ambiente);
+        Qlearning aprendizado2 = new Qlearning();
+        aprendizado2.inicializarMatriz(ambiente2);
+        aprendizado2.lerAmbiente(ambiente2);
+        //aprendizado.lerAmbiente(ambiente);
+        /*for(int i1= 0; i1 <= 5; i1++){
+            System.out.println(" ");
+            for(int j= 0; j<= 5; j++){
+                System.out.print(ambiente[i1][j].getAgente());
+            }
+        }*/
+       //aprendizado.InicializarMatriz(ambiente);
       
         aprendizado.Training(ambiente, 'M');
         aprendizado.CriarArquivo(ambiente, caminho);
         int controle = 1, origemlinha = 0, origemcoluna = 0;
         while(controle != 0){
+          for(int i1= 0; i1 <= 5; i1++){
+            System.out.println(" ");
+            for(int j= 0; j<= 5; j++){
+                System.out.print(ambiente2[i1][j].getAgente());
+            }
+          }
+              System.out.println("");
               System.out.println("Digite uma linha, de 0 a 5:");
               origemlinha = ler.nextInt();
               System.out.println("Digite uma coluna, de 0 a 5:");
               origemcoluna = ler.nextInt();
+              if(ambiente[origemlinha][origemcoluna].getAgente().equals("1")){
+                  System.out.println("Tem uma parede onde vc quer iniciar");
+              }else{
               System.out.println("Caminho pecorrido:");
-              aprendizado.pecorrerMatriz(ambiente, 'M',origemlinha,origemcoluna);
+              aprendizado.pecorrerMatriz(ambiente, "M",origemlinha,origemcoluna);
+              }
               System.out.println("Quer tentar um novo caminho, digite 1. Digite 0 para encerrar");
               controle = ler.nextInt();
         }

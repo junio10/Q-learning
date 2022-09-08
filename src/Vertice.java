@@ -11,18 +11,18 @@ import java.util.List;
  * @author junio
  */
 public class Vertice {
-    private char Agente;
+    private String Agente;
     private int reforco;
     private double dircima;
     private double diresq;
     private double dirdireita;
     private double dirbaixo;
     private List<Vertice> adjacentes;
-    public char getAgente() {
+    public String getAgente() {
         return Agente;
     }
 
-    public void setAgente(char Agente) {
+    public void setAgente(String Agente) {
         this.Agente = Agente;
     }
 
