@@ -81,11 +81,9 @@ public class Qlearning {
         String parede = "1";
         Vertice estadoAnterior, estadoAtual;
         double resultLearning = 0.0f;
-        for(int i1= 0; i1 <= 5; i1++){
-            for(int j= 0; j<= 5; j++){
-                ambiente[i1][j] = new Vertice();
-            }
-        }
+        //inicializando a matriz
+        inicializarMatriz(ambiente);
+        //lendo arquivo txt, e pondo os valores na matriz
         lerAmbiente(ambiente);
        
 

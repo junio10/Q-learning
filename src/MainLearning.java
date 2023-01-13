@@ -20,26 +20,14 @@ public class MainLearning {
         Vertice[][] ambiente2 = new Vertice[6][6];
         Scanner ler = new Scanner(System.in);
         String caminho = "estado.txt";
-       
-        /*  for(int i1= 0; i1 <= 5; i1++){
-            for(int j= 0; j<= 5; j++){
-                ambiente[i1][j] = new Vertice();
-            }
-        }*/
+    
       
         
         Qlearning aprendizado = new Qlearning();
         Qlearning aprendizado2 = new Qlearning();
         aprendizado2.inicializarMatriz(ambiente2);
         aprendizado2.lerAmbiente(ambiente2);
-        //aprendizado.lerAmbiente(ambiente);
-        /*for(int i1= 0; i1 <= 5; i1++){
-            System.out.println(" ");
-            for(int j= 0; j<= 5; j++){
-                System.out.print(ambiente[i1][j].getAgente());
-            }
-        }*/
-       //aprendizado.InicializarMatriz(ambiente);
+       
       
         aprendizado.Training(ambiente, 'M');
         aprendizado.CriarArquivo(ambiente, caminho);
